@@ -19,10 +19,10 @@ class CalendarGenerator {
 	 *
 	 * Loads the calendar language file and sets the default time reference
 	 */
-	public function __construct()
+	public function __construct($request)
 	{
 		$this->local_time = time();
-		$this->next_prev_url = \Request::url();
+		$this->next_prev_url = $request->url();
 
 		Lang::addNamespace('calendar', __DIR__ . '/../../lang');
 	}
