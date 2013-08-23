@@ -1,10 +1,11 @@
 {
     "name": "gloudemans/calendar",
-    "description": "",
+    "description": "Laravel 4 Calendar, port of the CodeIgniter Calender Library",
+    "keywords": ["laravel", "calendar"],
     "authors": [
         {
             "name": "Rob Gloudemans",
-            "email": "rob@matas.nl"
+            "email": "Rob_Gloudemans@hotmail.com"
         }
     ],
     "require": {
