@@ -20,7 +20,7 @@ class CalendarServiceProvider extends ServiceProvider {
 	{
 		$this->app['calendar'] = $this->app->share(function($app)
 		{
-			$request = $this->app['request'];
+			$request = $app['request'];
 			return new CalendarGenerator($request);
 		});
 	}
