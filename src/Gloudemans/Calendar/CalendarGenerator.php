@@ -174,17 +174,33 @@ class CalendarGenerator {
 				if ($day > 0 AND $day <= $total_days)
 				{
 					if (isset($data[$day]))
-					{
-						// Cells with content
-						$temp = ($is_current_month == TRUE AND $day == $cur_day) ? $this->temp['cal_cell_content_today'] : $this->temp['cal_cell_content'];
-						$out .= str_replace('{day}', $day, str_replace('{content}', $data[$day], $temp));
-					}
-					else
-					{
-						// Cells with no content
-						$temp = ($is_current_month == TRUE AND $day == $cur_day) ? $this->temp['cal_cell_no_content_today'] : $this->temp['cal_cell_no_content'];
-						$out .= str_replace('{day}', $day, $temp);
-					}
+                    {
+                        // Cells with content
+                        $temp = ($is_current_month == TRUE AND $day == $cur_day) ? $this->temp['cal_cell_content_today'] : $this->temp['cal_cell_content'];
+                        if (is_array($data[$day]))
+                          {
+                            $several_events = '';
+                            foreach ($data[$day] as $key)
+                            {
+                            	
+                              $several_events .= $key.'<br />';
+                              
+                            }
+                             $out .= str_replace('{day}', $day, str_replace('{content}', $several_events, $temp));
+                          }
+
+                          // One event per day
+                          else
+                          {
+                            $out .= str_replace('{day}', $day, str_replace('{content}', $data[$day], $temp));
+                          }
+                    }
+                    else
+                    {
+                        // Cells with no content
+                        $temp = ($is_current_month == TRUE AND $day == $cur_day) ? $this->temp['cal_cell_no_content_today'] : $this->temp['cal_cell_no_content'];
+                        $out .= str_replace('{day}', $day, $temp);
+                    } 
 				}
 				else
 				{
